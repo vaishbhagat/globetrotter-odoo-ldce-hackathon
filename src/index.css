@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-canvas: #FBF9F6;
+  --color-surface: #FFFFFF;
+  --color-ink: #121314;
+  --color-terracotta: #BC5E3E;
+  --color-sage: #5F6B5F;
+  --color-ochre: #D1A153;
+  --color-dusty: #A34C48;
+  --color-border: #EFEBE4;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+  }
+
+  h4, h5, h6, label, button, input, select, textarea {
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: rgba(188, 94, 62, 0.15);
+    color: var(--color-ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-canvas);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D9CEBC;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #BC5E3E;
+  }
+}
+
+@layer components {
+  /* ─── Card System ─── */
+  .card {
+    @apply bg-white border border-sand-300 rounded-xl p-6 shadow-warm-sm transition-all duration-200;
+  }
+
+  .card:hover {
+    @apply shadow-warm border-sand-400;
+  }
+
+  .card-dark {
+    @apply bg-ink-200 border border-ink-50 rounded-xl p-6;
+  }
+
+  /* ─── Button System ─── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-terracotta-500 text-white font-semibold text-sm rounded-lg 
+           hover:bg-terracotta-600 active:scale-[0.98] transition-all duration-150 shadow-terracotta;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-white text-ink-200 font-semibold text-sm rounded-lg 
+           border border-sand-300 hover:bg-linen-200 hover:border-sand-400 active:scale-[0.98] transition-all duration-150;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-ink-50 font-medium text-sm rounded-lg 
+           hover:bg-linen-200 active:scale-[0.98] transition-all duration-150;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-dusty-500 text-white font-semibold text-sm rounded-lg 
+           hover:bg-dusty-600 active:scale-[0.98] transition-all duration-150;
+  }
+
+  /* ─── Input System ─── */
+  .input {
+    @apply w-full px-4 py-2.5 bg-white border border-sand-300 rounded-lg text-sm text-ink-200 
+           placeholder:text-sand-500 focus:outline-none focus:border-terracotta-400 focus:ring-2 focus:ring-terracotta-100 
+           transition-all duration-150;
+  }
+
+  .input-dark {
+    @apply w-full px-4 py-2.5 bg-ink-50 border border-ink-100 rounded-lg text-sm text-white 
+           placeholder:text-gray-500 focus:outline-none focus:border-terracotta-400 focus:ring-1 focus:ring-terracotta-500
+           transition-all duration-150;
+  }
+
+  .label {
+    @apply block text-xs font-semibold uppercase tracking-wider text-ink-50 mb-1.5;
+  }
+
+  /* ─── Badge System ─── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold uppercase tracking-wide;
+  }
+
+  .badge-terracotta {
+    @apply badge bg-terracotta-50 text-terracotta-600;
+  }
+
+  .badge-sage {
+    @apply badge bg-sage-50 text-sage-600;
+  }
+
+  .badge-ochre {
+    @apply badge bg-ochre-50 text-ochre-600;
+  }
+
+  .badge-ink {
+    @apply badge bg-ink-200 text-white;
+  }
+
+  .badge-dusty {
+    @apply badge bg-dusty-50 text-dusty-600;
+  }
+
+  /* ─── Shimmer Skeleton ─── */
+  .skeleton {
+    @apply rounded-lg bg-shimmer-warm bg-[length:200%_100%] animate-shimmer;
+  }
+
+  /* ─── Section Header ─── */
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-sand-500;
+  }
+
+  /* ─── Divider ─── */
+  .divider {
+    @apply border-t border-sand-300;
+  }
+
+  /* ─── Alert Boxes ─── */
+  .alert-budget {
+    @apply flex items-start gap-3 p-4 bg-dusty-50 border border-dusty-100 rounded-xl text-dusty-700;
+  }
+
+  .alert-info {
+    @apply flex items-start gap-3 p-4 bg-linen-100 border border-sand-300 rounded-xl text-ink-50;
+  }
+
+  /* ─── Page Layout ─── */
+  .page-wrapper {
+    @apply min-h-screen bg-linen-100 flex;
+  }
+
+  .main-content {
+    @apply flex-1 overflow-auto;
+  }
+
+  /* ─── Timeline Line ─── */
+  .timeline-line {
+    @apply absolute left-4 top-8 bottom-0 w-px bg-sand-300;
+  }
+
+  /* ─── Progress Bar ─── */
+  .progress-track {
+    @apply w-full h-1.5 bg-sand-300 rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-terracotta-500 rounded-full transition-all duration-500;
+  }
+
+  .progress-fill-safe {
+    @apply h-full bg-sage-400 rounded-full transition-all duration-500;
+  }
+
+  .progress-fill-danger {
+    @apply h-full bg-dusty-500 rounded-full transition-all duration-500;
+  }
+}
+
+@layer utilities {
+  .text-display {
+    @apply font-serif text-4xl font-bold;
+  }
+
+  .text-heading {
+    @apply font-serif text-2xl font-semibold;
+  }
+
+  .text-subheading {
+    @apply font-sans text-xs font-semibold uppercase tracking-widest;
+  }
+
+  .animate-in {
+    @apply animate-fade-in;
+  }
+
+  .hover-scale {
+    @apply hover:scale-[1.01] transition-transform duration-150;
+  }
+
+  .warm-shadow {
+    box-shadow: 0 4px 12px -2px rgba(18, 19, 20, 0.06), 0 2px 4px -2px rgba(18, 19, 20, 0.04);
+  }
+
+  /* Glassmorphism warm variant */
+  .glass-warm {
+    background: rgba(251, 249, 246, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(239, 235, 228, 0.7);
+  }
+
+  /* Ink glass for dark panels */
+  .glass-ink {
+    background: rgba(18, 19, 20, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(42, 44, 47, 0.6);
+  }
+}
